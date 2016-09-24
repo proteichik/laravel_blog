@@ -2,6 +2,7 @@
 
 namespace App\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -51,6 +52,21 @@ class Post
      */
     protected $createdAt;
 
+    /**
+     * @var Comment[]
+     *
+     * @ORM\OneToMany(targetEntity="Comment", mappedBy="post", cascade={"remove"})
+     */
+    protected $comments;
+
+    /**
+     * Post constructor.
+     */
+    public function __construct()
+    {
+        $this->comments = new ArrayCollection();
+    }
+
 
     /**
      * @return int
@@ -58,17 +74,6 @@ class Post
     public function getId()
     {
         return $this->id;
-    }
-
-    /**
-     * @param $id
-     * @return $this
-     */
-    public function setId($id)
-    {
-        $this->id = $id;
-
-        return $this;
     }
 
     /**
@@ -144,6 +149,39 @@ class Post
         $this->createdAt = new \DateTime();
     }
 
+    /**
+     * @return Comment[]
+     */
+    public function getComments()
+    {
+        return $this->comments;
+    }
 
+    /**
+     * @param $comments
+     * @return $this
+     */
+    public function setComments($comments)
+    {
+        $this->comments = $comments;
+
+        return $this;
+    }
+
+    /**
+     * @param Comment $comment
+     */
+    public function addComment(Comment $comment)
+    {
+        $this->comments[] = $comment;
+    }
+
+    /**
+     * @param Comment $comment
+     */
+    public function removeComment(Comment $comment)
+    {
+        $this->comments->removeElement($comment);
+    }
 
 }
