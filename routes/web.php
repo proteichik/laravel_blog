@@ -11,6 +11,6 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/blog', 'PostController@index');
+
+Route::get('/', 'PostController@listAction');

@@ -29,7 +29,7 @@ class Post
      *
      * @ORM\Column(type="string")
      */
-    protected $header;
+    protected $title;
 
     /**
      * @var string
@@ -79,18 +79,18 @@ class Post
     /**
      * @return string
      */
-    public function getHeader()
+    public function getTitle()
     {
-        return $this->header;
+        return $this->title;
     }
 
     /**
-     * @param $header
+     * @param $title
      * @return $this
      */
-    public function setHeader($header)
+    public function setTitle($title)
     {
-        $this->header = $header;
+        $this->title = $title;
 
         return $this;
     }
