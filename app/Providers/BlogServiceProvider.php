@@ -2,7 +2,7 @@
 
 namespace App\Providers;
 
-use App\Http\Controllers\PostController;
+use App\Http\Controllers\Admin\PostController;
 use App\Model\BaseServiceInterface;
 use App\Services\BaseService;
 use Illuminate\Support\ServiceProvider;

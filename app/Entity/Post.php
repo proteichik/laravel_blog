@@ -53,6 +53,14 @@ class Post
     protected $createdAt;
 
     /**
+     * @var Category
+     *
+     * @ORM\ManyToOne(targetEntity="Category", inversedBy="posts")
+     * @ORM\JoinColumn(name="category_id", referencedColumnName="id")
+     */
+    protected $category;
+
+    /**
      * @var Comment[]
      *
      * @ORM\OneToMany(targetEntity="Comment", mappedBy="post", cascade={"remove"})

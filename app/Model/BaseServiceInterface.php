@@ -9,8 +9,10 @@ namespace App\Model;
 
 use Doctrine\Common\Persistence\ObjectRepository;
 use Doctrine\ORM\EntityManagerInterface;
+use LaravelDoctrine\ORM\Pagination\Paginatable;
 
-interface BaseServiceInterface extends ObjectManipulatorInterface, ObjectRepository
+interface BaseServiceInterface extends ObjectManipulatorInterface,
+    ObjectRepository, PaginateInterface
 {
     /**
      * @return \Doctrine\Common\Persistence\ObjectRepository

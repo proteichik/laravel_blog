@@ -4,9 +4,12 @@ namespace App\Services;
 
 use App\Model\BaseServiceInterface;
 use Doctrine\ORM\EntityManagerInterface;
+use LaravelDoctrine\ORM\Pagination\Paginatable;
 
 class BaseService implements BaseServiceInterface
 {
+    use Paginatable;
+
     /**
      * @var EntityManagerInterface
      */
@@ -123,4 +126,18 @@ class BaseService implements BaseServiceInterface
     {
         return $this->em;
     }
+
+    /**
+     * @param $alias
+     * @param null $indexBy
+     * @return \Doctrine\ORM\QueryBuilder
+     */
+    public function createQueryBuilder($alias, $indexBy = null)
+    {
+        return $this->em->createQueryBuilder()
+            ->select($alias)
+            ->from($this->entityName, $alias, $indexBy);
+    }
+
+
 }
