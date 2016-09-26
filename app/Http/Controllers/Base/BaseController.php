@@ -27,6 +27,7 @@ abstract class BaseController extends Controller
     public function __construct(BaseServiceInterface $service)
     {
         $this->service = $service;
+        $this->views = $this->defineViews();
     }
     
     public function listAction(Request $request)
@@ -44,7 +45,13 @@ abstract class BaseController extends Controller
         return view($this->getView('show'), ['object' => $object]);
     }
 
-    abstract protected function setViews();
+    protected function defineViews()
+    {
+        return [
+            
+        ];
+    }
+    
     abstract protected function getConfig($key, $default = null);
     
     protected function getView($key)

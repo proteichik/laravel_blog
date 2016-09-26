@@ -7,10 +7,10 @@ use App\Http\Controllers\Base\BaseController;
 
 class PostController extends BaseController
 {
-    protected function setViews()
+    protected function defineViews()
     {
         return [
-
+            'list' => 'admin.post.list',
         ];
     }
 
