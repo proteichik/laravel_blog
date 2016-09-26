@@ -15,4 +15,8 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/blog', 'Admin\PostController@listAction');
+Route::group(['prefix' => 'admin'], function(){
+    Route::get('/', 'Admin\PostController@listAction');
+    
+});
+
