@@ -29,7 +29,11 @@ abstract class BaseController extends Controller
         $this->service = $service;
         $this->views = $this->defineViews();
     }
-    
+
+    /**
+     * @param Request $request
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function listAction(Request $request)
     {
         $itemsPerPage = $this->getConfig('item_per_page');
@@ -40,16 +44,18 @@ abstract class BaseController extends Controller
                 ->getQuery();
 
             $objects = $this->service->paginate($query, $itemsPerPage);
-            
         } else {
             $objects = $this->service->paginateAll($itemsPerPage);
         }
 
-
-
         return view($this->getView('list'), ['objects' => $objects]);
     }
 
+    /**
+     * @param Request $request
+     * @param $id
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function showAction(Request $request, $id)
     {
         $object = $this->service->find($id);
@@ -57,15 +63,27 @@ abstract class BaseController extends Controller
         return view($this->getView('show'), ['object' => $object]);
     }
 
+    /**
+     * @return array
+     */
     protected function defineViews()
     {
         return [
             
         ];
     }
-    
+
+    /**
+     * @param $key
+     * @param null $default
+     * @return string
+     */
     abstract protected function getConfig($key, $default = null);
-    
+
+    /**
+     * @param $key
+     * @return string
+     */
     protected function getView($key)
     {
         if (!isset($this->views[$key])) {
