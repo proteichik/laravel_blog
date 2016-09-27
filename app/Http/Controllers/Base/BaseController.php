@@ -33,7 +33,19 @@ abstract class BaseController extends Controller
     public function listAction(Request $request)
     {
         $itemsPerPage = $this->getConfig('item_per_page');
-        $objects = $this->service->paginateAll($itemsPerPage);
+
+        if ($request->has('sort')) {
+            $query = $this->service->createQueryBuilder('q')
+                ->orderBy($request->input('sort'), $request->input('direction', 'asc'))
+                ->getQuery();
+
+            $objects = $this->service->paginate($query, $itemsPerPage);
+            
+        } else {
+            $objects = $this->service->paginateAll($itemsPerPage);
+        }
+
+
 
         return view($this->getView('list'), ['objects' => $objects]);
     }

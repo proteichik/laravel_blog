@@ -23,4 +23,14 @@ interface BaseServiceInterface extends ObjectManipulatorInterface,
      * @return EntityManagerInterface
      */
     public function getEntityManager();
+
+    /**
+     * Creates a new QueryBuilder instance that is prepopulated for this entity name.
+     *
+     * @param string $alias
+     * @param string $indexBy The index for the from.
+     *
+     * @return \Doctrine\ORM\QueryBuilder
+     */
+    public function createQueryBuilder($alias, $indexBy = null);
 }

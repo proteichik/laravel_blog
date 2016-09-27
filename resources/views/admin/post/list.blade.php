@@ -25,4 +25,6 @@
             @endforelse
         </tbody>
     </table>
+
+    {{ $objects->render() }}
 @endsection
