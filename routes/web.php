@@ -16,7 +16,13 @@ Route::get('/', function () {
 });
 
 Route::group(['prefix' => 'admin'], function(){
-    Route::get('/', 'Admin\PostController@listAction');
+
+    Route::get('/', [
+            'as' => 'admin.home',
+            'uses' => 'Admin\PostController@listAction'
+    ]);
+
+    
     
 });
 

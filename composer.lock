@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "cd5fc66a26f86b6e92ddaeac0564ec52",
-    "content-hash": "dfa1899b518227a94c4ede912bc2054f",
+    "hash": "a31d6358c2f8739b8f887b2d492d7c2c",
+    "content-hash": "b11b3f7c340f4331fa7f6a5136654beb",
     "packages": [
         {
             "name": "barryvdh/laravel-debugbar",
@@ -933,6 +933,56 @@
                 "tokenizer"
             ],
             "time": "2015-12-05 17:17:57"
+        },
+        {
+            "name": "kyslik/column-sortable",
+            "version": "5.1.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Kyslik/column-sortable.git",
+                "reference": "6d36f395e3cc05675e73b4f97effeef3c3736b5d"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Kyslik/column-sortable/zipball/6d36f395e3cc05675e73b4f97effeef3c3736b5d",
+                "reference": "6d36f395e3cc05675e73b4f97effeef3c3736b5d",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/database": "5.1.* || 5.2.* || 5.3.*",
+                "illuminate/support": "5.1.* || 5.2.* || 5.3.*",
+                "php": ">=5.6.4"
+            },
+            "require-dev": {
+                "orchestra/testbench": "3.3.*",
+                "phpunit/phpunit": "~5.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Kyslik\\ColumnSortable\\": "src/ColumnSortable/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Martin Kiesel",
+                    "email": "martinkiesel@gmail.com"
+                }
+            ],
+            "description": "Package for handling column sorting in Laravel 5.1, 5.2 and 5.3",
+            "keywords": [
+                "column",
+                "laravel",
+                "one-to-one",
+                "sort",
+                "sortable",
+                "sorting"
+            ],
+            "time": "2016-09-19 18:43:42"
         },
         {
             "name": "laravel-doctrine/orm",

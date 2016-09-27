@@ -168,6 +168,7 @@ return [
          */
         LaravelDoctrine\ORM\DoctrineServiceProvider::class,
         Barryvdh\Debugbar\ServiceProvider::class,
+        Kyslik\ColumnSortable\ColumnSortableServiceProvider::class,
 
         //
 

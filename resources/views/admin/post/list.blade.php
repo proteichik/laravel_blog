@@ -4,10 +4,10 @@
     <table class="table">
         <thead>
             <tr>
-                <th>id</th>
-                <th>Заголовок</th>
-                <th>Каегория</th>
-                <th>Дата создания</th>
+                <th>@sortablelink('q.id', 'id')</th>
+                <th>@sortablelink('q.title', 'Заголовок')</th>
+                <th>@sortablelink('c.name', 'Категория')</th>
+                <th>@sortablelink('q.createdAt', 'Дата создания')</th>
                 <th>Действия</th>
             </tr>
         </thead>
