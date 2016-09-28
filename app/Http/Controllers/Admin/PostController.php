@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 
 use App\Http\Controllers\Base\BaseController;
+use App\Http\Requests\StoreBlogPostRequest;
 
 class PostController extends BaseController
 {
@@ -19,5 +20,8 @@ class PostController extends BaseController
        return config('blog.back.' . $key, $default);
     }
 
-
+    public function createAction(StoreBlogPostRequest $request)
+    {
+        
+    }
 }

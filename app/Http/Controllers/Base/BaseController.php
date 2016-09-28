@@ -64,6 +64,27 @@ abstract class BaseController extends Controller
     }
 
     /**
+     * @param Request $request
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function showCreateForm(Request $request)
+    {
+        return view($this->getView('create'));
+    }
+
+    /**
+     * @param Request $request
+     * @param $id
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function showUpdateForm(Request $request, $id)
+    {
+        $object = $this->service->find($id);
+
+        return view($this->getView('update'), ['object' => $object]);
+    }
+
+    /**
      * @return array
      */
     protected function defineViews()

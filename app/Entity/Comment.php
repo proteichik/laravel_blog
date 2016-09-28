@@ -2,6 +2,7 @@
 
 namespace App\Entity;
 
+use App\Model\BaseEntity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -11,7 +12,7 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Entity
  * @ORM\Table(name="comments")
  */
-class Comment
+class Comment extends BaseEntity
 {
     /**
      * @var int

@@ -26,6 +26,7 @@ class StoreBlogPostRequest extends FormRequest
         return [
             'title' => 'required|max:255',
             'content' => 'required',
+            'category' => 'required',
         ];
     }
 }

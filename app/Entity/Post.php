@@ -2,6 +2,7 @@
 
 namespace App\Entity;
 
+use App\Model\BaseEntity;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
@@ -13,7 +14,7 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\HasLifecycleCallbacks
  * @ORM\Table(name="posts")
  */
-class Post
+class Post extends BaseEntity
 {
     /**
      * @var int
