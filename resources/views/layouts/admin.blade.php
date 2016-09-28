@@ -39,6 +39,9 @@
                     <div class="menu_section">
                         <h3>Welcome, </h3>
                         <br />
+                        <ul class="nav side-menu">
+                            @include('admin.menu.custom-menu-items', array('items' => $mainMenu->roots()))
+                        </ul>
                     </div>
 
                 </div>

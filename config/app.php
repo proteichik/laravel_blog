@@ -169,6 +169,8 @@ return [
         LaravelDoctrine\ORM\DoctrineServiceProvider::class,
         Barryvdh\Debugbar\ServiceProvider::class,
         Kyslik\ColumnSortable\ColumnSortableServiceProvider::class,
+        Lavary\Menu\ServiceProvider::class,
+        Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider::class,
 
         //
 
@@ -230,6 +232,7 @@ return [
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
         'EntityManager' => LaravelDoctrine\ORM\Facades\EntityManager::class,
+        'Menu' => Lavary\Menu\Facade::class,
     ],
 
 ];
