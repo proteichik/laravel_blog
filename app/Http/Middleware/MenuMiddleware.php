@@ -20,8 +20,8 @@ class MenuMiddleware
             $menu->add('Записи')->data(['icon' => 'fa fa-home']);
             $menu->get('zapisi')
                 ->add('Список записей', ['route' => 'admin.home']);
-//            $menu->get('записи')
-//                ->add('Новая запись', ['route' => 'admin.home']);
+            $menu->get('zapisi')
+                ->add('Новая запись', ['route' => 'admin.posts.new']);
 
         });
 

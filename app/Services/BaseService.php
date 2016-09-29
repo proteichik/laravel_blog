@@ -139,5 +139,23 @@ class BaseService implements BaseServiceInterface
             ->from($this->entityName, $alias, $indexBy);
     }
 
+    /**
+     * @param $valueField
+     * @param string $keyField
+     * @param array $options
+     * @return array
+     */
+    public function getArrayList($valueField, $keyField = 'id', array $options = array())
+    {
+        $list = $this->createQueryBuilder('q')->getQuery()->getArrayResult();
+        
+        $result = array();
+        foreach ($list as $item) {
+            $result[$item[$keyField]] = $item[$valueField];
+        }
+        
+        return $result;
+    }
+
 
 }

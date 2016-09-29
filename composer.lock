@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "adc1c38fa97b2955b3c5975bf7a429d5",
-    "content-hash": "cece07fe9c285dc0c41ba9c513511194",
+    "hash": "d42ba60699db8511c59e0a8a2b08d1cc",
+    "content-hash": "b545e95d19d3931c99d4e1c7fb700978",
     "packages": [
         {
             "name": "barryvdh/laravel-debugbar",
@@ -1299,6 +1299,60 @@
                 "laravel"
             ],
             "time": "2016-09-20 13:46:16"
+        },
+        {
+            "name": "laravelcollective/html",
+            "version": "v5.3.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/LaravelCollective/html.git",
+                "reference": "961ce141c16c6b085128f209496c26efd3e681ca"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/LaravelCollective/html/zipball/961ce141c16c6b085128f209496c26efd3e681ca",
+                "reference": "961ce141c16c6b085128f209496c26efd3e681ca",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/http": "5.3.*",
+                "illuminate/routing": "5.3.*",
+                "illuminate/session": "5.3.*",
+                "illuminate/support": "5.3.*",
+                "illuminate/view": "5.3.*",
+                "php": ">=5.6.4"
+            },
+            "require-dev": {
+                "illuminate/database": "5.3.*",
+                "mockery/mockery": "~0.9.4",
+                "phpunit/phpunit": "~5.4"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Collective\\Html\\": "src/"
+                },
+                "files": [
+                    "src/helpers.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Taylor Otwell",
+                    "email": "taylorotwell@gmail.com"
+                },
+                {
+                    "name": "Adam Engebretson",
+                    "email": "adam@laravelcollective.com"
+                }
+            ],
+            "description": "HTML and Form Builders for the Laravel Framework",
+            "homepage": "http://laravelcollective.com",
+            "time": "2016-08-27 23:52:43"
         },
         {
             "name": "lavary/laravel-menu",
@@ -3010,6 +3064,55 @@
                 "environment"
             ],
             "time": "2016-09-01 10:05:43"
+        },
+        {
+            "name": "watson/bootstrap-form",
+            "version": "1.0.15",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/dwightwatson/bootstrap-form.git",
+                "reference": "e98b3c53e34da88894f5cd3b8fbdfe42e302ee1b"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/dwightwatson/bootstrap-form/zipball/e98b3c53e34da88894f5cd3b8fbdfe42e302ee1b",
+                "reference": "e98b3c53e34da88894f5cd3b8fbdfe42e302ee1b",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/config": "~5.0",
+                "illuminate/session": "~5.0",
+                "illuminate/support": "~5.0",
+                "laravelcollective/html": "~5.0",
+                "php": ">=5.4.0"
+            },
+            "require-dev": {
+                "mockery/mockery": "0.9.*",
+                "phpunit/phpunit": "~4.6"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Watson\\BootstrapForm\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Dwight Watson",
+                    "email": "dwightwatson@me.com"
+                }
+            ],
+            "description": "Laravel 5 form wrappers for Bootstrap 3.",
+            "keywords": [
+                "bootstrap",
+                "form",
+                "laravel"
+            ],
+            "time": "2016-07-28 18:46:23"
         }
     ],
     "packages-dev": [

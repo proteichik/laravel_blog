@@ -11,7 +11,8 @@
         "barryvdh/laravel-debugbar": "^2.3",
         "kyslik/column-sortable": "^5.1",
         "lavary/laravel-menu": "^1.6",
-        "barryvdh/laravel-ide-helper": "^2.2"
+        "barryvdh/laravel-ide-helper": "^2.2",
+        "watson/bootstrap-form": "^1.0"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",

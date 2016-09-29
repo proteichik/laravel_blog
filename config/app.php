@@ -171,6 +171,8 @@ return [
         Kyslik\ColumnSortable\ColumnSortableServiceProvider::class,
         Lavary\Menu\ServiceProvider::class,
         Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider::class,
+        Collective\Html\HtmlServiceProvider::class,
+        Watson\BootstrapForm\BootstrapFormServiceProvider::class,
 
         //
 
@@ -233,6 +235,9 @@ return [
         'View' => Illuminate\Support\Facades\View::class,
         'EntityManager' => LaravelDoctrine\ORM\Facades\EntityManager::class,
         'Menu' => Lavary\Menu\Facade::class,
+        'Form'     => Collective\Html\FormFacade::class,
+        'HTML'     => Collective\Html\HtmlFacade::class,
+        'BootForm' => Watson\BootstrapForm\Facades\BootstrapForm::class,
     ],
 
 ];

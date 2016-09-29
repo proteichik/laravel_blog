@@ -33,4 +33,14 @@ interface BaseServiceInterface extends ObjectManipulatorInterface,
      * @return \Doctrine\ORM\QueryBuilder
      */
     public function createQueryBuilder($alias, $indexBy = null);
+
+    /**
+     * return [$key => $value] for list
+     * 
+     * @param $keyField
+     * @param $valueField
+     * @param array $options
+     * @return array
+     */
+    public function getArrayList($valueField, $keyField = 'id', array $options = array());
 }
