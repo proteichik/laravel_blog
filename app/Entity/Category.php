@@ -44,6 +44,8 @@ class Category extends BaseEntity
     public function __construct()
     {
         $this->posts = new ArrayCollection();
+        
+        parent::__construct();
     }
 
     /**
@@ -107,7 +109,14 @@ class Category extends BaseEntity
         
         return $this;
     }
-    
-    
+
+    /**
+     * @return string
+     */
+    public function __toString()
+    {
+        return $this->getName();
+    }
+
 
 }

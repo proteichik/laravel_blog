@@ -140,22 +140,20 @@ class BaseService implements BaseServiceInterface
     }
 
     /**
-     * @param $valueField
-     * @param string $keyField
-     * @param array $options
+     * @param array $order
      * @return array
      */
-    public function getArrayList($valueField, $keyField = 'id', array $options = array())
+    public function getSelectList(array $order = array())
     {
-        $list = $this->createQueryBuilder('q')->getQuery()->getArrayResult();
+        $objects = $this->findBy(array(), $order);
         
         $result = array();
-        foreach ($list as $item) {
-            $result[$item[$keyField]] = $item[$valueField];
+        foreach ($objects as $object) {
+            $result[$object->getId()] = $object->__toString();
         }
-        
+
         return $result;
     }
-
+    
 
 }

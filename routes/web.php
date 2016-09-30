@@ -18,7 +18,7 @@ Route::get('/', function () {
 Route::group(['prefix' => 'admin'], function(){
 
     Route::get('/', [
-            'as' => 'admin.home',
+            'as' => 'admin.posts',
             'uses' => 'Admin\PostController@listAction'
     ]);
 

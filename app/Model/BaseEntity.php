@@ -9,6 +9,11 @@ class BaseEntity
      */
     protected $guarded = [];
 
+    public function __construct()
+    {
+        $this->guarded[] = 'id';
+    }
+
     /**
      * @param array $data
      */
@@ -20,7 +25,7 @@ class BaseEntity
             }
 
             if (method_exists($this, $this->generateSetter($key))) {
-                call_user_func(array($this, $this->generateSetter($key), $value));
+                call_user_func(array($this, $this->generateSetter($key)), $value);
             }
         }
     }

@@ -69,11 +69,21 @@ class Post extends BaseEntity
     protected $comments;
 
     /**
+     * @var array
+     */
+    protected $guarded = [
+        'category',
+        'comments',
+    ];
+
+    /**
      * Post constructor.
      */
     public function __construct()
     {
         $this->comments = new ArrayCollection();
+
+        parent::__construct();
     }
 
 
@@ -212,6 +222,13 @@ class Post extends BaseEntity
         return $this;
     }
 
+    /**
+     * @return string
+     */
+    public function __toString()
+    {
+        return $this->getTitle();
+    }
 
 
 }

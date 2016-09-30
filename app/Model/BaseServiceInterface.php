@@ -35,12 +35,10 @@ interface BaseServiceInterface extends ObjectManipulatorInterface,
     public function createQueryBuilder($alias, $indexBy = null);
 
     /**
-     * return [$key => $value] for list
+     * Get list of object for select box
      * 
-     * @param $keyField
-     * @param $valueField
-     * @param array $options
-     * @return array
+     * @param array $order
+     * @return mixed
      */
-    public function getArrayList($valueField, $keyField = 'id', array $options = array());
+    public function getSelectList(array $order = array());
 }

@@ -136,5 +136,12 @@ class Comment extends BaseEntity
         return $this;
     }
 
+    /**
+     * @return string
+     */
+    public function __toString()
+    {
+        return $this->getCreatedAt()->format('Y-m-d H:i:s') . $this->getAuthor();
+    }
 
 }

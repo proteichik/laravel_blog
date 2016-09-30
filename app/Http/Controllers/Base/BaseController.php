@@ -13,7 +13,7 @@ abstract class BaseController extends Controller
     /**
      * @var BaseServiceInterface
      */
-    protected $service;
+    protected $objectManager;
 
     /**
      * @var array
@@ -22,11 +22,11 @@ abstract class BaseController extends Controller
 
     /**
      * PostController constructor.
-     * @param BaseServiceInterface $service
+     * @param BaseServiceInterface $objectManager
      */
-    public function __construct(BaseServiceInterface $service)
+    public function __construct(BaseServiceInterface $objectManager)
     {
-        $this->service = $service;
+        $this->objectManager = $objectManager;
         $this->views = $this->defineViews();
     }
 
@@ -39,13 +39,13 @@ abstract class BaseController extends Controller
         $itemsPerPage = $this->getConfig('item_per_page');
 
         if ($request->has('sort')) {
-            $query = $this->service->createQueryBuilder('q')
-                ->orderBy($request->input('sort'), $request->input('direction', 'asc'))
+            $query = $this->objectManager->createQueryBuilder('q')
+                ->orderBy($request->input('sort'), $request->input('order', 'asc'))
                 ->getQuery();
 
-            $objects = $this->service->paginate($query, $itemsPerPage);
+            $objects = $this->objectManager->paginate($query, $itemsPerPage);
         } else {
-            $objects = $this->service->paginateAll($itemsPerPage);
+            $objects = $this->objectManager->paginateAll($itemsPerPage);
         }
 
         return view($this->getView('list'), ['objects' => $objects]);
@@ -58,7 +58,7 @@ abstract class BaseController extends Controller
      */
     public function showAction(Request $request, $id)
     {
-        $object = $this->service->find($id);
+        $object = $this->objectManager->find($id);
 
         return view($this->getView('show'), ['object' => $object]);
     }
@@ -79,7 +79,7 @@ abstract class BaseController extends Controller
      */
     public function showUpdateForm(Request $request, $id)
     {
-        $object = $this->service->find($id);
+        $object = $this->objectManager->find($id);
 
         return view($this->getView('update'), ['object' => $object]);
     }
