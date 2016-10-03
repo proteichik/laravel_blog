@@ -22,6 +22,11 @@ class MenuMiddleware
                 ->add('Список записей', ['route' => 'admin.posts']);
             $menu->get('zapisi')
                 ->add('Новая запись', ['route' => 'admin.posts.new']);
+            
+            $menu->add('Категории')->data(['icon' => 'fa fa-home']);
+            $menu->get('kategorii')
+                ->add('Список категорий', ['route' => 'admin.categories']);
+            
 
         });
 

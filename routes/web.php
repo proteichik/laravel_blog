@@ -31,6 +31,11 @@ Route::group(['prefix' => 'admin'], function(){
         'as' => 'admin.posts.new.save',
         'uses' => 'Admin\PostController@createAction'
     ]);
+
+    Route::get('/categories', [
+        'as' => 'admin.categories',
+        'uses' => 'Admin\CategoryController@listAction',
+    ]);
     
 });
 
