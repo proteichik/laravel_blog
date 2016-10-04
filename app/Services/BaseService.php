@@ -154,6 +154,22 @@ class BaseService implements BaseServiceInterface
 
         return $result;
     }
-    
+
+    /**
+     * @param $id
+     * @param string $message
+     * @return object
+     */
+    public function findOrThrowsException($id, $message = 'Object not found')
+    {
+        $object = $this->find($id);
+
+        if (!$object) {
+            throw new \InvalidArgumentException($message);
+        }
+
+        return $object;
+    }
+
 
 }

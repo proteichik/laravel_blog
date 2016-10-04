@@ -32,6 +32,17 @@ Route::group(['prefix' => 'admin'], function(){
         'uses' => 'Admin\PostController@createAction'
     ]);
 
+    Route::get('/posts/{id}', [
+        'as' => 'admin.posts.edit',
+        'uses' => 'Admin\PostController@showUpdateForm'
+    ])->where('id', '[0-9]+');
+
+    Route::post('/posts/{id}', [
+        'as' => 'admin.posts.edit.save',
+        'uses' => 'Admin\PostController@updateAction'
+    ])->where('id', '[0-9]+');
+    
+
     Route::get('/categories', [
         'as' => 'admin.categories',
         'uses' => 'Admin\CategoryController@listAction',

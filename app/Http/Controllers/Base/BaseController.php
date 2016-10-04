@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Base;
 
+use App\Model\BaseEntityInterface;
 use App\Model\BaseServiceInterface;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -58,7 +59,7 @@ abstract class BaseController extends Controller
      */
     public function showAction(Request $request, $id)
     {
-        $object = $this->objectManager->find($id);
+        $object = $this->objectManager->findOrThrowsException($id);
 
         return view($this->getView('show'), ['object' => $object]);
     }
@@ -69,7 +70,7 @@ abstract class BaseController extends Controller
      */
     public function showCreateForm(Request $request)
     {
-        return view($this->getView('create'));
+        return view($this->getView('create'), ['object' => $this->getEntity()]);
     }
 
     /**
@@ -79,7 +80,7 @@ abstract class BaseController extends Controller
      */
     public function showUpdateForm(Request $request, $id)
     {
-        $object = $this->objectManager->find($id);
+        $object = $this->objectManager->findOrThrowsException($id);
 
         return view($this->getView('update'), ['object' => $object]);
     }
@@ -100,6 +101,11 @@ abstract class BaseController extends Controller
      * @return string
      */
     abstract protected function getConfig($key, $default = null);
+
+    /**
+     * @return BaseEntityInterface
+     */
+    abstract protected function getEntity();
 
     /**
      * @param $key

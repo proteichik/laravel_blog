@@ -41,4 +41,12 @@ interface BaseServiceInterface extends ObjectManipulatorInterface,
      * @return mixed
      */
     public function getSelectList(array $order = array());
+
+    /**
+     * @param $id
+     * @param string $message
+     * @return mixed
+     * @throws \InvalidArgumentException
+     */
+    public function findOrThrowsException($id, $message = 'Object not found');
 }

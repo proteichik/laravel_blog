@@ -208,7 +208,7 @@ class Post extends BaseEntity
      */
     public function getCategory()
     {
-        return $this->category;
+        return ($this->category === null) ? new Category() : $this->category;
     }
 
     /**

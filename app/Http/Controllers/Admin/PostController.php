@@ -36,6 +36,7 @@ class PostController extends BaseController
         return [
             'list' => 'admin.post.list',
             'create' => 'admin.post.create',
+            'update' => 'admin.post.update',
         ];
     }
 
@@ -55,10 +56,54 @@ class PostController extends BaseController
      */
     public function showCreateForm(Request $request)
     {
-        
         $categories = $this->categoryService->getSelectList();
         
-        return view($this->getView('create'), ['categories' => $categories]);
+        return view($this->getView('create'), ['categories' => $categories, 
+            'object' => $this->getEntity(),
+            'route' => [
+                'admin.posts.new.save'
+            ]
+        ]);
+    }
+
+    /**
+     * @param Request $request
+     * @param $id
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function showUpdateForm(Request $request, $id)
+    {
+        $object = $this->objectManager->findOrThrowsException($id);
+        
+        $categories = $this->categoryService->getSelectList();
+
+        return view($this->getView('update'), [
+            'categories' => $categories,
+            'object' => $object,
+            'route' => [
+                'admin.posts.edit.save',
+                $id
+            ]
+        ]);
+    }
+
+    /**
+     * @param Request $request
+     * @param $id
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function updateAction(Request $request, $id)
+    {
+        /** @var Post $post */
+        $post = $this->objectManager->findOrThrowsException($id, 'Post not found');
+        $category = $this->categoryService->findOrThrowsException(
+            $request->input('category', null), 'Category not found');
+        
+        $post->hydrate($request->all());
+        $post->setCategory($category);
+        $this->objectManager->save($post);
+
+        return redirect()->route('admin.posts');
     }
 
     /**
@@ -67,18 +112,25 @@ class PostController extends BaseController
      */
     public function createAction(StoreBlogPostRequest $request)
     {
-        $category = $this->categoryService->find($request->input('category', null));
-        
-        if (!$category) {
-            throw new \RuntimeException(sprintf(
-                'Category with id %s not fount'), $request->input('category', null));
-        }
-        
-        $post = new Post();
+        $category = $this->categoryService->findOrThrowsException(
+            $request->input('category', null), 'Category not found');
+
+        /** @var Post $post */ 
+        $post = $this->getEntity();
         $post->hydrate($request->all());
         $post->setCategory($category);
         $this->objectManager->save($post);
         
         return redirect()->route('admin.posts');
     }
+
+    /**
+     * @return App\Model\BaseEntityInterface
+     */
+    protected function getEntity()
+    {
+        return new Post();
+    }
+
+
 }
