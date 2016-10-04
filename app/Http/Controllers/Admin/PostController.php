@@ -88,18 +88,18 @@ class PostController extends BaseController
     }
 
     /**
-     * @param Request $request
+     * @param StoreBlogPostRequest $request
      * @param $id
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function updateAction(Request $request, $id)
+    public function updateAction(StoreBlogPostRequest $request, $id)
     {
         /** @var Post $post */
         $post = $this->objectManager->findOrThrowsException($id, 'Post not found');
         $category = $this->categoryService->findOrThrowsException(
             $request->input('category', null), 'Category not found');
         
-        $post->hydrate($request->all());
+        $post->hydrate($request->formatInput());
         $post->setCategory($category);
         $this->objectManager->save($post);
 
@@ -117,7 +117,7 @@ class PostController extends BaseController
 
         /** @var Post $post */ 
         $post = $this->getEntity();
-        $post->hydrate($request->all());
+        $post->hydrate($request->formatInput());
         $post->setCategory($category);
         $this->objectManager->save($post);
         
