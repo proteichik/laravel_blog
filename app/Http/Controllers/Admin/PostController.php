@@ -99,7 +99,7 @@ class PostController extends BaseController
         $category = $this->categoryService->findOrThrowsException(
             $request->input('category', null), 'Category not found');
         
-        $post->hydrate($request->formatInput());
+        $post->hydrate($request->escapeInput());
         $post->setCategory($category);
         $this->objectManager->save($post);
 
@@ -117,7 +117,7 @@ class PostController extends BaseController
 
         /** @var Post $post */ 
         $post = $this->getEntity();
-        $post->hydrate($request->formatInput());
+        $post->hydrate($request->escapeInput());
         $post->setCategory($category);
         $this->objectManager->save($post);
         

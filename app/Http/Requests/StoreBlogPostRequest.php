@@ -2,9 +2,8 @@
 
 namespace App\Http\Requests;
 
-use Illuminate\Foundation\Http\FormRequest;
 
-class StoreBlogPostRequest extends FormRequest
+class StoreBlogPostRequest extends BaseFormRequest
 {
     protected $escaping = [
         'title',
@@ -33,23 +32,5 @@ class StoreBlogPostRequest extends FormRequest
             'content' => 'required',
             'category' => 'required',
         ];
-    }
-
-    /**
-     * @return array
-     */
-    public function formatInput()
-    {
-        $data = $this->all();
-
-        $formatData = array();
-        foreach ($data as $key => $item) {
-            $formatData[$key] =
-                (in_array($key, $this->escaping)) ?
-                    htmlspecialchars($item, ENT_QUOTES, 'UTF-8', false) :
-                    $item;
-        }
-
-        return $formatData;
     }
 }

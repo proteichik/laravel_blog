@@ -41,6 +41,11 @@ Route::group(['prefix' => 'admin'], function(){
         'as' => 'admin.posts.edit.save',
         'uses' => 'Admin\PostController@updateAction'
     ])->where('id', '[0-9]+');
+
+    Route::post('/posts/delete/{id}', [
+        'as' => 'admin.posts.delete',
+        'uses' => 'Admin\PostController@deleteAction'
+    ])->where('id', '[0-9]+');
     
 
     Route::get('/categories', [

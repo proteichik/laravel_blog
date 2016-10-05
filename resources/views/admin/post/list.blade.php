@@ -23,7 +23,7 @@
                             <a href="{{ route('admin.posts.edit', ['id' => $object->getId()])  }}" type="button" class="btn btn-warning">
                                 <i class="fa fa-pencil" aria-hidden="true"></i>
                             </a>
-                            <a href="#" type="button" class="btn btn-danger" name="btn-delete">
+                            <a href="{{ route('admin.posts.delete', ['id' => $object->getId()]) }}" type="button" class="btn btn-danger" name="btn-delete">
                                 <i class="fa fa-trash" aria-hidden="true"></i>
                             </a>
                         </div>

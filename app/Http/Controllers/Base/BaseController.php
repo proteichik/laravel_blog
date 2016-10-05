@@ -86,6 +86,24 @@ abstract class BaseController extends Controller
     }
 
     /**
+     * @param Request $request
+     * @param $id
+     * @return \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse
+     */
+    public function deleteAction(Request $request, $id)
+    {
+        $object = $this->objectManager->findOrThrowsException($id);
+
+        $this->objectManager->remove($object);
+
+        if ($request->isXmlHttpRequest()) {
+            return response()->json(['result' => 'success'], 200);
+        }
+
+        return redirect()->back();
+    }
+
+    /**
      * @return array
      */
     protected function defineViews()
