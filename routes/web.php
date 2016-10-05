@@ -48,10 +48,20 @@ Route::group(['prefix' => 'admin'], function(){
     ])->where('id', '[0-9]+');
     
 
+
     Route::get('/categories', [
         'as' => 'admin.categories',
         'uses' => 'Admin\CategoryController@listAction',
     ]);
-    
+
+    Route::get('/categories/new', [
+        'as' => 'admin.categories.new',
+        'uses' => 'Admin\CategoryController@showCreateForm',
+    ]);
+
+    Route::post('/categories/new', [
+        'as' => 'admin.categories.new.save',
+        'uses' => 'Admin\CategoryController@createAction',
+    ]);
 });
 

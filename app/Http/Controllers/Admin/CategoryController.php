@@ -3,21 +3,12 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Entity\Category;
-use App\Http\Controllers\Base\BaseController;
+use App\Http\Controllers\Base\AdminBaseController;
+use App\Http\Requests\StoreCategoryRequest;
 use App\Model\BaseEntityInterface;
 
-class CategoryController extends BaseController
+class CategoryController extends AdminBaseController
 {
-    /**
-     * @param $key
-     * @param null $default
-     * @return mixed
-     */
-    protected function getConfig($key, $default = null)
-    {
-        return config('blog.back.' . $key, $default);
-    }
-
     /**
      * @return array
      */
@@ -35,6 +26,20 @@ class CategoryController extends BaseController
     protected function getEntity()
     {
         return new Category();
+    }
+
+    /**
+     * @param StoreCategoryRequest $request
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function createAction(StoreCategoryRequest $request)
+    {
+        $category = $this->getEntity();
+        $category->hydrate($request->escapeInput());
+
+        $this->objectManager->save($category);
+
+        return redirect()->route('admin.categories');
     }
 
 

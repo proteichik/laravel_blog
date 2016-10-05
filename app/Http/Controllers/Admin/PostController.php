@@ -3,14 +3,14 @@
 namespace App\Http\Controllers\Admin;
 
 
-use App\Http\Controllers\Base\BaseController;
+use App\Http\Controllers\Base\AdminBaseController;
 use App\Http\Requests\StoreBlogPostRequest;
 use App\Model\BaseServiceInterface;
 use Illuminate\Http\Request;
 use App;
 use App\Entity\Post;
 
-class PostController extends BaseController
+class PostController extends AdminBaseController
 {
     /**
      * @var App\Model\BaseServiceInterface
@@ -41,16 +41,6 @@ class PostController extends BaseController
     }
 
     /**
-     * @param $key
-     * @param null $default
-     * @return mixed
-     */
-    protected function getConfig($key, $default = null)
-    {
-       return config('blog.back.' . $key, $default);
-    }
-
-    /**
      * @param Request $request
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
@@ -61,8 +51,8 @@ class PostController extends BaseController
         return view($this->getView('create'), ['categories' => $categories, 
             'object' => $this->getEntity(),
             'route' => [
-                'admin.posts.new.save'
-            ]
+                $this->getConfig('form_routes.create'),
+            ],
         ]);
     }
 
@@ -81,9 +71,9 @@ class PostController extends BaseController
             'categories' => $categories,
             'object' => $object,
             'route' => [
-                'admin.posts.edit.save',
-                $id
-            ]
+                $this->getConfig('form_routes.update'),
+                $id,
+            ],
         ]);
     }
 

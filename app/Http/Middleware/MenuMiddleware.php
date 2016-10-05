@@ -26,6 +26,8 @@ class MenuMiddleware
             $menu->add('Категории')->data(['icon' => 'fa fa-home']);
             $menu->get('kategorii')
                 ->add('Список категорий', ['route' => 'admin.categories']);
+            $menu->get('kategorii')
+                ->add('Добавить категорию', ['route' => 'admin.categories.new']);
             
 
         });

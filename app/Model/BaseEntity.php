@@ -23,9 +23,7 @@ class BaseEntity implements BaseEntityInterface
             if (in_array($key, $this->guarded)) {
                 continue;
             }
-
-
-
+            
             if (method_exists($this, $this->generateSetter($key))) {
                 call_user_func(array($this, $this->generateSetter($key)), $value);
             }

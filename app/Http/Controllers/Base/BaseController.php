@@ -61,7 +61,9 @@ abstract class BaseController extends Controller
     {
         $object = $this->objectManager->findOrThrowsException($id);
 
-        return view($this->getView('show'), ['object' => $object]);
+        return view($this->getView('show'), [
+            'object' => $object,
+            ]);
     }
 
     /**
@@ -70,7 +72,12 @@ abstract class BaseController extends Controller
      */
     public function showCreateForm(Request $request)
     {
-        return view($this->getView('create'), ['object' => $this->getEntity()]);
+        return view($this->getView('create'), [
+            'object' => $this->getEntity(),
+            'route' => [
+                $this->getConfig('form_routes.create'),
+            ],
+        ]);
     }
 
     /**
@@ -81,8 +88,14 @@ abstract class BaseController extends Controller
     public function showUpdateForm(Request $request, $id)
     {
         $object = $this->objectManager->findOrThrowsException($id);
-
-        return view($this->getView('update'), ['object' => $object]);
+        
+        return view($this->getView('update'), [
+            'object' => $object,
+            'route' => [
+                $this->getConfig('form_routes.update'),
+                $id,
+            ],
+        ]);
     }
 
     /**
