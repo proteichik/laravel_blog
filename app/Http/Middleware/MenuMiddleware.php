@@ -17,13 +17,13 @@ class MenuMiddleware
     public function handle($request, Closure $next)
     {
         Menu::make('mainMenu', function($menu) {
-            $menu->add('Записи')->data(['icon' => 'fa fa-home']);
+            $menu->add('Записи')->data(['icon' => 'fa fa-sticky-note-o']);
             $menu->get('zapisi')
                 ->add('Список записей', ['route' => 'admin.posts']);
             $menu->get('zapisi')
                 ->add('Новая запись', ['route' => 'admin.posts.new']);
             
-            $menu->add('Категории')->data(['icon' => 'fa fa-home']);
+            $menu->add('Категории')->data(['icon' => 'fa fa-bars']);
             $menu->get('kategorii')
                 ->add('Список категорий', ['route' => 'admin.categories']);
             $menu->get('kategorii')
