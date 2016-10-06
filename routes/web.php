@@ -63,5 +63,20 @@ Route::group(['prefix' => 'admin'], function(){
         'as' => 'admin.categories.new.save',
         'uses' => 'Admin\CategoryController@createAction',
     ]);
+
+    Route::get('/categories/{id}', [
+        'as' => 'admin.categories.edit',
+        'uses' => 'Admin\CategoryController@showUpdateForm',
+    ])->where('id', '[0-9]+');
+
+    Route::post('/categories/{id}', [
+        'as' => 'admin.categories.edit.save',
+        'uses' => 'Admin\CategoryController@updateAction',
+    ])->where('id', '[0-9]+');
+
+    Route::post('/categories/delete/{id}', [
+        'as' => 'admin.categories.delete',
+        'uses' => 'Admin\CategoryController@deleteAction'
+    ])->where('id', '[0-9]+');
 });
 

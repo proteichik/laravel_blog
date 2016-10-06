@@ -107,13 +107,16 @@ abstract class BaseController extends Controller
     {
         $object = $this->objectManager->findOrThrowsException($id);
 
-        $this->objectManager->remove($object);
-
-        if ($request->isXmlHttpRequest()) {
-            return response()->json(['result' => 'success'], 200);
+        try {
+            $this->objectManager->remove($object);
+        } catch (\Exception $ex) {
+            return ($request->isXmlHttpRequest()) ? response()->json(['result' => $ex->getMessage()], 500)
+                : redirect()->back()->withException($ex);
         }
 
-        return redirect()->back();
+        return ($request->isXmlHttpRequest()) ?
+            response()->json(['result' => 'success'], 200) :
+            redirect()->back();
     }
 
     /**

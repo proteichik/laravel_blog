@@ -34,7 +34,7 @@ class Category extends BaseEntity
     /**
      * @var Post[]
      *
-     * @ORM\OneToMany(targetEntity="Post", mappedBy="category", cascade={"remove"})
+     * @ORM\OneToMany(targetEntity="Post", mappedBy="category")
      */
     protected $posts;
 

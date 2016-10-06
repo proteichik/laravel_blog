@@ -13,7 +13,7 @@ return [
             'item_per_page' => 10,
             'form_routes' => [
                 'create' => 'admin.categories.new.save',
-                'update' => 'admin.posts.edit.save',
+                'update' => 'admin.categories.edit.save',
             ],
         ],
         

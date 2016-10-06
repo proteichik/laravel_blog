@@ -17,6 +17,7 @@ class CategoryController extends AdminBaseController
         return [
             'list' => 'admin.category.list',
             'create' => 'admin.category.create',
+            'update' => 'admin.category.update',
         ];
     }
 
@@ -42,5 +43,19 @@ class CategoryController extends AdminBaseController
         return redirect()->route('admin.categories');
     }
 
+    /**
+     * @param StoreCategoryRequest $request
+     * @param $id
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function updateAction(StoreCategoryRequest $request, $id)
+    {
+        $category = $this->objectManager->findOrThrowsException($id);
+        $category->hydrate($request->escapeInput());
+
+        $this->objectManager->save($category);
+
+        return redirect()->route('admin.categories');
+    }
 
 }
